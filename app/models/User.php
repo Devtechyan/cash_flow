@@ -12,21 +12,21 @@ class User
  private $date;
  private $token;
 
- public function __construct($user_data = [])
- {
-  if (isset($user_data['name'])) {
-   $this->name          = @$user_data['name'];
-   $this->email         = @$user_data['email'];
-   $this->password      = @$user_data['password'];
-   $this->token         = @$user_data['token'];
-   $this->profile_image = @$user_data['profile_image'];
-   $this->is_confirmed  = @$user_data['is_confirmed'];
-   $this->is_active     = @$user_data['is_active'];
-   $this->is_login      = @$user_data['is_login'];
-   $this->date          = @$user_data['date'];
-  }
+//  public function __construct($user_data = [])
+//  {
+//   if (isset($user_data['name'])) {
+//    $this->name          = @$user_data['name'];
+//    $this->email         = @$user_data['email'];
+//    $this->password      = @$user_data['password'];
+//    $this->token         = @$user_data['token'];
+//    $this->profile_image = @$user_data['profile_image'];
+//    $this->is_confirmed  = @$user_data['is_confirmed'];
+//    $this->is_active     = @$user_data['is_active'];
+//    $this->is_login      = @$user_data['is_login'];
+//    $this->date          = @$user_data['date'];
+//   }
 
- }
+//  }
 
  public function setName($name)
  {

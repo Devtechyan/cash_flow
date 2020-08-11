@@ -9,14 +9,13 @@ class User extends Controller
 
  public function index()
  {
-  $user = $this->db->getById("users",1);
+     
+  $user = $this->db->getById("users",2);
   $data = [
    'title' => 'Welcome',
    'user'  => $user,
   ];
-  
-  echo "This is user index";
-  //$this->view('pages/index', $data);
+  $this->view('user/index', $data);
 
  }
 
@@ -24,6 +23,16 @@ class User extends Controller
  public function create()
  {
   echo "This is user create";
+ }
+
+ public function add()
+ {
+     echo "this is add";
+ }
+
+ public function remove()
+ {
+     echo "This is remove method";
  }
 
 }

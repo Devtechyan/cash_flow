@@ -8,7 +8,8 @@
 
 class Core
 {
- protected $currentController = 'Page';
+
+ protected $currentController = 'Page'; //'User' //
  protected $currentMethod     = 'index';
  protected $param             = [];
 
