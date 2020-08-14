@@ -9,7 +9,7 @@
 class Core
 {
 
- protected $currentController = 'Page'; //'User' //
+ protected $currentController = 'Page'; 
  protected $currentMethod     = 'index';
  protected $param             = [];
 
@@ -17,6 +17,8 @@ class Core
  {
 
   $url = $this->getUrl();
+
+  setIndex('desktop');
 
   // Look in controllers for first value
   if (isset($url) && file_exists('../app/controllers/' . ucwords($url[0] . '.php'))) {

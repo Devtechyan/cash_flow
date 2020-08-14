@@ -11,28 +11,22 @@ class Page extends Controller
  public function index()
  {
 
-    echo "This is page index";
-
-//   $data = [
-//    'title' => 'Home'
-//   ];
-//   $this->view('pages/index', $data);
-
- }
-
- public function create($id)
- {
-  echo $id;
- }
-
- public function about()
- {
   $data = [
-   'title' => 'About',
+   'index' => 'dashboard'
   ];
-
-  $this->view('pages/about', $data);
+  $this->view('pages/dashboard', $data);
 
  }
+
+ public function dashboard()
+ {
+
+  $data = [
+   'index' => 'dashboard'
+  ];
+  $this->view('pages/dashboard', $data);
+
+ }
+
  
 }
