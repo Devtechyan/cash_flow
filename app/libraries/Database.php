@@ -125,4 +125,73 @@ class Database
   }
  }
 
+ public function columnFilter($table,$column,$value)
+ {
+
+  $stm = $this->pdo->prepare('SELECT * FROM ' . $table . ' WHERE `' . str_replace('`', '', $column) . '` = :value');
+  $stm->bindValue(':value', $value);
+  $success = $stm->execute();
+  $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+  return ($success) ? $row : [];
+  
+ }
+
+ public function loginCheck($email,$password)
+ {
+     try{
+        
+        $sql        = "SELECT * FROM users WHERE `email` =:email AND `password` =:password ";
+        $stm        = $this->pdo->prepare($sql);
+        $stm->bindValue(':email',$email);
+        $stm->bindValue(':password',$password);
+        $success = $stm->execute();
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
+ public function setLogin($id)
+ {
+    try{
+        
+        $sql        = "UPDATE users SET is_login = :true WHERE `id` = :id";
+        $stm        = $this->pdo->prepare($sql);
+        $stm->bindValue(':true','1');
+        $stm->bindValue(':id',$id);
+        $success = $stm->execute();
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
+ public function unsetLogin($id)
+ {
+    try{
+        
+        $sql        = "UPDATE users SET is_login = :false WHERE `id` = :id";
+        $stm        = $this->pdo->prepare($sql);
+        $stm->bindValue(':false','0');
+        $stm->bindValue(':id',$id);
+        $success = $stm->execute();
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
 }

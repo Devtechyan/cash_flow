@@ -4,7 +4,7 @@ class Page extends Controller
  private $db;
  public function __construct()
  {
-  $this->userModel = $this->model('User');
+  $this->userModel = $this->model('UserModel');
   $this->db = new Database;
  }
 
@@ -12,9 +12,9 @@ class Page extends Controller
  {
 
   $data = [
-   'index' => 'dashboard'
+   //
   ];
-  $this->view('pages/dashboard', $data);
+  $this->view('pages/login', $data);
 
  }
 
@@ -26,6 +26,11 @@ class Page extends Controller
   ];
   $this->view('pages/dashboard', $data);
 
+ }
+
+ public function register()
+ {
+     $this->view('pages/register');
  }
 
  

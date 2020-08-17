@@ -7,6 +7,18 @@
 class Controller
 {
 
+ private $userId;
+
+ public function setUserId($id)
+ {
+    $this->userId = $id;
+ }
+
+ public function getUserId()
+ {
+    return $this->userId;
+ }
+
  // Load model
  public function model($model)
  {

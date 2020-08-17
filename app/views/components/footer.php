@@ -11,6 +11,20 @@
 <script src="<?php echo URLROOT; ?>/public/js/bootstrap.min.js"></script>
 <script src="<?php echo URLROOT; ?>/public/js/main.js"></script>
 
+	
+<!--===============================================================================================-->	
+<script src="<?php echo URLROOT; ?>/public/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="<?php echo URLROOT; ?>/public/vendor/bootstrap/js/popper.js"></script>
+<script src="<?php echo URLROOT; ?>/public/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo URLROOT; ?>/public/vendor/select2/select2.min.js"></script>
+<script src="<?php echo URLROOT; ?>/public/vendor/tilt/tilt.jquery.min.js"></script>
+<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+</script>
+<script src="<?php echo URLROOT; ?>/public/js/login.js"></script>
+
 </body>
 
 </html>
