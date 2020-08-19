@@ -141,7 +141,7 @@ class Database
  {
      try{
         
-        $sql        = "SELECT * FROM users WHERE `email` =:email AND `password` =:password ";
+        $sql        = "SELECT * FROM users WHERE `email` =:email AND `password` =:password";
         $stm        = $this->pdo->prepare($sql);
         $stm->bindValue(':email',$email);
         $stm->bindValue(':password',$password);
@@ -193,5 +193,71 @@ class Database
          echo($e);
      }
  }
+
+ public function incomeView()
+ {
+    try{
+
+        $sql        = "SELECT incomes.id,incomes.user_id,incomes.amount,incomes.date,categories.name AS category_name,incomes.category_id,users.name AS user_name
+        FROM incomes
+        LEFT JOIN categories ON incomes.category_id = categories.id 
+        LEFT JOIN users ON incomes.user_id = users.id";
+
+        $stm = $this->pdo->prepare($sql);
+        $success = $stm->execute();
+
+        $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
+ public function expenseView()
+ {
+    try{
+
+        $sql        = "SELECT expenses.id,expenses.user_id,expenses.qty,expenses.amount,expenses.date,categories.name AS category_name,expenses.category_id,users.name AS user_name
+        FROM expenses
+        LEFT JOIN categories ON expenses.category_id = categories.id 
+        LEFT JOIN users ON expenses.user_id = users.id";
+
+        $stm = $this->pdo->prepare($sql);
+        $success = $stm->execute();
+
+        $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
+ public function categoryView()
+ {
+    try{
+
+        $sql        = "SELECT categories.id,categories.name,categories.description,types.name AS type_name
+        FROM categories
+        LEFT JOIN types ON categories.type_id = types.id";
+
+        $stm = $this->pdo->prepare($sql);
+        $success = $stm->execute();
+
+        $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
 
 }

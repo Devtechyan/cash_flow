@@ -18,11 +18,11 @@
       <thead>
        <tr>
          <th>id</th>
-         <th>category id</th>
-         <th>amount</th>
-         <th>qty</th>
-         <th>user id</th>
-         <th>date </th>
+         <th>Category</th>
+         <th>Amount</th>
+         <th>Qty</th>
+         <th>Assigned By</th>
+         <th>Date </th>
          <th></th>
          <th></th>
        </tr>
@@ -33,10 +33,10 @@
                ?>
                <tr>
                <td><?php echo $expense['id'] ?></td>
-               <td><?php echo $expense['category_id'] ?></td>
+               <td><?php echo $expense['category_name'] ?></td>
                <td><?php echo $expense['amount'] ?></td>
                <td><?php echo $expense['qty'] ?></td>
-               <td><?php echo $expense['user_id'] ?></td>
+               <td><?php echo $expense['user_name'] ?></td>
                <td><?php echo $expense['date'] ?></td>
                <td>
                   <a class="btn btn-primary" href="<?php echo URLROOT ?>/expense/edit/<?php echo $expense['id'] ?>">Edit</a>

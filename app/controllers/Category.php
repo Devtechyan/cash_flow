@@ -10,7 +10,7 @@ class Category extends Controller
 
     public function index()
     {
-        $categories = $this->db->readAll('categories');
+        $categories = $this->db->categoryView('categories');
         $data = [
             'title' => "This is Category Page",
             'categories'  => $categories,

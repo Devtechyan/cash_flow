@@ -19,10 +19,10 @@
       <thead>
        <tr>
          <th>id</th>
-         <th>category id</th>
-         <th>amount</th>
-         <th>user id</th>
-         <th>date </th>
+         <th>Category</th>
+         <th>Amount</th>
+         <th>Assigned By</th>
+         <th>Date </th>
          <th></th>
          <th></th>
        </tr>
@@ -33,9 +33,9 @@
                ?>
                <tr>
                <td><?php echo $income['id'] ?></td>
-               <td><?php echo $income['category_id'] ?></td>
+               <td><?php echo $income['category_name'] ?></td>
                <td><?php echo $income['amount'] ?></td>
-               <td><?php echo $income['user_id'] ?></td>
+               <td><?php echo $income['user_name'] ?></td>
                <td><?php echo $income['date'] ?></td>
                <td>
                   <a href="<?php echo URLROOT ?>/income/edit/<?php echo $income['id'] ?>" class="btn btn-primary">Edit</a>

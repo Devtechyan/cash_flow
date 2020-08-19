@@ -9,9 +9,9 @@ class Income extends Controller
     }
 
     public function index()
-    {
-        $incomes = $this->db->readAll('incomes');
-
+    {   
+        
+        $incomes = $this->db->incomeView();
         $data = [
             'title' => " This is Income Page",
             'incomes' => $incomes,
@@ -40,7 +40,10 @@ class Income extends Controller
         {
             $amount = $_POST['amount'];
             $category_id = $_POST['category_id'];
-            $user_id = 1;
+
+            session_start();
+            $user_id = base64_decode($_SESSION['id']);
+            
             $date = date("Y/m/d");
 
             $this->model('IncomeModel');

@@ -8,7 +8,7 @@
             if($data['index']=='dashboard') echo "active";
         }
          ?>>
-        <a href="<?php echo URLROOT ?>/">Dashboard</a>
+        <a href="<?php echo URLROOT ?>/page/dashboard">Dashboard</a>
         </li>
         <li class=<?php 
         if(isset($data['index']))

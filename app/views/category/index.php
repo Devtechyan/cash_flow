@@ -18,10 +18,10 @@
       <table class="table table-light text-center" id="myTable">
       <thead>
        <tr>
-         <th>id</th>
-         <th>name</th>
-         <th>description</th>
-         <th>type_id</th>
+         <th>Id</th>
+         <th>Name</th>
+         <th>Description</th>
+         <th>Type</th>
          <th></th>
          <th></th>
        </tr>
@@ -34,7 +34,7 @@
                <td><?php echo $category['id'] ?></td>
                <td><?php echo $category['name'] ?></td>
                <td><?php echo $category['description'] ?></td>
-               <td><?php echo $category['type_id'] ?></td>
+               <td><?php echo $category['type_name'] ?></td>
                <td>
                   <a href="<?php echo URLROOT ?>/category/edit/<?php echo $category['id'] ?>" class="btn btn-primary">Edit</a>
                </td>

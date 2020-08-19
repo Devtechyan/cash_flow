@@ -13,7 +13,7 @@
 
 	
 <!--===============================================================================================-->	
-<script src="<?php echo URLROOT; ?>/public/vendor/jquery/jquery-3.2.1.min.js"></script>
+
 <script src="<?php echo URLROOT; ?>/public/vendor/bootstrap/js/popper.js"></script>
 <script src="<?php echo URLROOT; ?>/public/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo URLROOT; ?>/public/vendor/select2/select2.min.js"></script>

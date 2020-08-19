@@ -39,7 +39,7 @@ class Auth extends Controller {
         if($_SERVER['REQUEST_METHOD']=='POST')
         {
             // Check user exist 
-
+            $email = $_POST['email'];
             $isUserExist = $this->db->columnFilter('users','email',$email);
             if($isUserExist)
             {
@@ -56,7 +56,7 @@ class Auth extends Controller {
                 $this->view('pages/register', $data);
             }
             else{
-                $name = $_POST['name'];
+                $name = input($_POST['name']);
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 
