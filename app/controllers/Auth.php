@@ -23,9 +23,8 @@ class Auth extends Controller {
         {
             
             //$this->auth->setAuthId($success['id']);
-
-            setMessage('id',base64_encode($success['id'])); 
-
+            setMessage('id',base64_encode($success['id']));
+             
             $this->db->setLogin($success['id']);
             redirect('page/dashboard');   
         }
@@ -33,49 +32,40 @@ class Auth extends Controller {
             setMessage('error','Authentication Fail. Please try again !');
             redirect('');
         }
-
-        
     }
 
     public function register()
     {
         if($_SERVER['REQUEST_METHOD']=='POST')
         {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $profile_image = 'default_profile.jpg';
-            $token        = bin2hex(random_bytes(50));
-
-            #Input validation
-            if (!preg_match('/^[a-zA-Z0-9\s]+$/', $name)) {
-                $nameError = 'Name can only contain letters, numbers and white spaces';
-            }
-            
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $emailError = 'Invalid Email';
-            }
-            
-            if (strlen($password) < 6) {
-                $passwordError = 'Please enter a long password';
-            }
-            
-            //Hash Password before saving
-            $password = base64_encode(($password));
-
-
             // Check user exist 
 
             $isUserExist = $this->db->columnFilter('users','email',$email);
-            
             if($isUserExist)
             {
                 setMessage("error","This email is already register !");
                 redirect('/page/register');
             }
-
+            else
+            {
+            
+            // Validate entries
+            $validation = new UserValidator($_POST);
+            $data       = $validation->validateForm();
+            if (count($data) > 0) {
+                $this->view('pages/register', $data);
+            }
             else{
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+
+                $profile_image = 'default_profile.jpg';
+                $token        = bin2hex(random_bytes(50));
+                
+                //Hash Password before saving
+                $password = base64_encode(($password));
+
                 $user = new UserModel();
                 $user->setName($name);
                 $user->setEmail($email);
@@ -95,12 +85,9 @@ class Auth extends Controller {
                     redirect("");
                 }
 
-                else 
-                {
-                    //
-                }
-            }
-            
+                }  // end of validation check
+
+            }  // end of user-exist
 
             }
             
