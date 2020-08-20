@@ -15,7 +15,7 @@
 
         <div class="row mt-5">
 
-        <div class="card border-primary my-3 mx-4" style="max-width: 18rem;">
+        <div class="card border-primary my-3 mx-4" style="max-width: 30rem;">
             <div class="card-header">Today Income</div>
               <div class="card-body">
                 <h5 class="card-title"> <?php if($data['expense']['amount'])echo $data['income']['amount'];else echo "0.00" ?> MMKs </h5>
@@ -26,8 +26,8 @@
               </div>
             </div>
 
-            <div class="card border-primary my-3 mx-4" style="max-width: 18rem;">
-            <div class="card-header">Today Expand</div>
+            <div class="card border-primary my-3 mx-4" style="max-width: 30rem;">
+            <div class="card-header">Today Expense</div>
               <div class="card-body">
               <h5 class="card-title"> <?php if($data['expense']['amount'])echo $data['expense']['amount'];else echo "0.00" ?> MMKs </h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -37,13 +37,13 @@
               </div>
             </div>
 
-            <div class="card border-info my-3 mx-4" style="max-width: 18rem;">
+            <!-- <div class="card border-info my-3 mx-4" style="max-width: 18rem;">
             <div class="card-header">Today Transitions</div>
               <div class="card-body">
                 <h5 class="card-title">Primary card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
-            </div>
+            </div> -->
             
         </div>  <!-- end of row -->
 

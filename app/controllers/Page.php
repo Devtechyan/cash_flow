@@ -22,7 +22,7 @@ class Page extends Controller
  {
 
   $income = $this->db->todayTransition('incomes');
-  $expense = $this->db->todayTransition('expenses');
+  $expense = $this->db->expenseTransition('expenses');
   $data = [
    'index' => 'dashboard',
    'income' => $income,
