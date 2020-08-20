@@ -57,8 +57,8 @@ class Auth extends Controller {
             }
             else{
                 $name = input($_POST['name']);
-                $email = $_POST['email'];
-                $password = $_POST['password'];
+                $email = input($_POST['email']);
+                $password = input($_POST['password']);
 
                 $profile_image = 'default_profile.jpg';
                 $token        = bin2hex(random_bytes(50));

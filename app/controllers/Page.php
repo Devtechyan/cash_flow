@@ -21,8 +21,12 @@ class Page extends Controller
  public function dashboard()
  {
 
+  $income = $this->db->todayTransition('incomes');
+  $expense = $this->db->todayTransition('expenses');
   $data = [
-   'index' => 'dashboard'
+   'index' => 'dashboard',
+   'income' => $income,
+   'expense' => $expense,
   ];
   $this->view('pages/dashboard', $data);
 

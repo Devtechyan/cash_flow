@@ -259,5 +259,25 @@ class Database
      }
  }
 
+ public function todayTransition($table)
+ {
+    try{
+
+        $sql        = "SELECT SUM(amount) AS amount FROM $table WHERE
+        (date = { fn CURDATE() }) ";
+        $stm = $this->pdo->prepare($sql);
+        $success = $stm->execute();
+
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+    
+ }
+
 
 }
