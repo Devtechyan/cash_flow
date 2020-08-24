@@ -3,7 +3,11 @@
 
 function setMessage($name,$description)
 {
-    session_start();
+    if(session_id() == ''){
+        //session has not started
+        session_start();
+    }
+    
     $_SESSION[$name] = $description; 
 }
 

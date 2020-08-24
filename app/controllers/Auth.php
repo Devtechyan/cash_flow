@@ -14,23 +14,25 @@ class Auth extends Controller {
 
     public function login()
     {
+
         $email = $_POST['email'];
         $password = base64_encode($_POST['password']);
 
         $success = $this->db->loginCheck($email,$password);
 
+        redirect('page/dashboard');
+        //print_r($success);
         if($success)
         {
             
-            //$this->auth->setAuthId($success['id']);
-            setMessage('id',base64_encode($success['id']));
-             
-            $this->db->setLogin($success['id']);
-            redirect('page/dashboard');   
+           setMessage('id',base64_encode($success['id']));
+          
+            // $this->db->setLogin($success['id']);
+            // redirect('page/dashboard');   
         }
         else{
             setMessage('error','Authentication Fail. Please try again !');
-            redirect('');
+            //redirect('');
         }
     }
 
@@ -78,10 +80,16 @@ class Auth extends Controller {
                 $user->setDate(date('Y-m-d H:i:s'));
 
                 $userCreated = $this->db->create('users', $user->toArray());
-
+                
                 if($userCreated) 
                 {
-                    setMessage("success","Successfully Registered . Please log in !");
+                   
+                    // Instatiate mail
+                    $mail = new Mail();
+                    $verify_token = URLROOT.'/auth/verify/'.$token;
+                    $mail->verifyMail($email,$name,$verify_token);
+                    
+                    setMessage("success","Please check your inbox to verify your email address !");
                     redirect("");
                 }
 
@@ -91,6 +99,34 @@ class Auth extends Controller {
 
             }
             
+        }
+
+        public function verify($token)
+        {
+            $user = $this->db->columnFilter('users','token',$token);
+
+            if($user)
+            {
+               $success =  $this->db->verify($user[0]['id']);
+
+               if($success)
+               {
+                   setMessage("success","Successfully Verified . Please log in !");
+                 
+               }
+               else{
+    
+                setMessage("error","Fail to Verify . Please try again!");
+    
+               }
+            }
+
+            else 
+            {
+                setMessage("error","Incrorrect Token . Please try again!");
+            }
+
+            redirect("");
         }
 
         public function logout()

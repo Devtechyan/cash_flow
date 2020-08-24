@@ -9,6 +9,8 @@ define('DB_CHARSET', 'utf8');
 // App Root
 define('APPROOT', dirname(dirname(__FILE__)));
 
+//echo dirname(dirname(__FILE__));
+
 // URL Root
 define('URLROOT', 'http://localhost:8080/mvcoop');
 

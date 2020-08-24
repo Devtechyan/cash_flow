@@ -1,7 +1,8 @@
 <?php
-class Page extends Controller
+class Page extends Controller 
 {
  private $db;
+ private $mail;
  public function __construct()
  {
   $this->userModel = $this->model('UserModel');
@@ -35,6 +36,19 @@ class Page extends Controller
  public function register()
  {
      $this->view('pages/register');
+ }
+
+ public function mail()
+ {
+   // Require mail file
+   require_once '../app/libraries/Mail.php';
+
+   // Instatiate mail
+   $mail = new Mail();
+
+   $mail->mailTo('info.ivhub@gmail.com','IT Vision Hub');
+
+   return redirect("");
  }
 
  

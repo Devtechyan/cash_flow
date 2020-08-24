@@ -137,11 +137,30 @@ class Database
   
  }
 
+ public function verify($id)
+ {
+    try{
+        
+        $sql        = "UPDATE users SET `is_confirmed` =:true ,`is_active` ='1' WHERE `id` = $id";
+        $stm        = $this->pdo->prepare($sql);
+        $stm->bindValue(':true','1');
+        $success = $stm->execute();
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
+        print_r($row);
+        return ($success) ? $success : '0';
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
  public function loginCheck($email,$password)
  {
      try{
         
-        $sql        = "SELECT * FROM users WHERE `email` =:email AND `password` =:password";
+        $sql        = "SELECT * FROM users WHERE `email` =:email AND `password` =:password AND `is_confirmed` = '1'";
         $stm        = $this->pdo->prepare($sql);
         $stm->bindValue(':email',$email);
         $stm->bindValue(':password',$password);

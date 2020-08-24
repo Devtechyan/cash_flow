@@ -29,6 +29,16 @@ class Controller
   return new $model();
  }
 
+//  public function mail()
+//  {
+//   // Require model file
+//   require_once '../app/helper/mail.php';
+
+//   // Instatiate model
+//   return new mail();
+  
+//  }
+
  // Load View
  public function view($view, $data = [])
  {
