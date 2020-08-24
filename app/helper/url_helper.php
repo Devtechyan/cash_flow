@@ -1,9 +1,9 @@
 <?php
 // Simple page redirect
 
-function redirect($page)
+function redirect($url)
 {
- header('location: ' . URLROOT . '/' . $page);
+    echo '<script language="javascript">window.location.href ="'.URLROOT.'/'.$url.'"</script>';
 }
 
 function setIndex($page)

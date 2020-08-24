@@ -40,6 +40,7 @@ class Auth extends Controller {
     {
         if($_SERVER['REQUEST_METHOD']=='POST')
         {
+            
             // Check user exist 
             $email = $_POST['email'];
             $isUserExist = $this->db->columnFilter('users','email',$email);
@@ -80,18 +81,21 @@ class Auth extends Controller {
                 $user->setDate(date('Y-m-d H:i:s'));
 
                 $userCreated = $this->db->create('users', $user->toArray());
-                
+                //$userCreated="true";
+        
                 if($userCreated) 
-                {
-                   
-                    // Instatiate mail
+                {  
+                    //Instatiate mail
                     $mail = new Mail();
+                    
                     $verify_token = URLROOT.'/auth/verify/'.$token;
                     $mail->verifyMail($email,$name,$verify_token);
                     
                     setMessage("success","Please check your inbox to verify your email address !");
-                    redirect("");
+                
                 }
+
+                redirect('');
 
                 }  // end of validation check
 
