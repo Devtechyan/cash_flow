@@ -20,19 +20,15 @@ class Auth extends Controller {
 
         $success = $this->db->loginCheck($email,$password);
 
-        redirect('page/dashboard');
-        //print_r($success);
         if($success)
-        {
-            
-           setMessage('id',base64_encode($success['id']));
-          
-            // $this->db->setLogin($success['id']);
-            // redirect('page/dashboard');   
+        { 
+            setMessage('id',base64_encode($success['id']));
+            $this->db->setLogin($success['id']);
+            redirect('page/dashboard');   
         }
         else{
             setMessage('error','Authentication Fail. Please try again !');
-            //redirect('');
+            redirect('');
         }
     }
 
@@ -46,7 +42,7 @@ class Auth extends Controller {
             $isUserExist = $this->db->columnFilter('users','email',$email);
             if($isUserExist)
             {
-                setMessage("error","This email is already register !");
+                setMessage("error","This email is already registered !");
                 redirect('/page/register');
             }
             else

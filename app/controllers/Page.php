@@ -40,8 +40,6 @@ class Page extends Controller
 
  public function mail()
  {
-   // Require mail file
-   require_once '../app/libraries/Mail.php';
 
    // Instatiate mail
    $mail = new Mail();
